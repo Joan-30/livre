@@ -1,0 +1,32 @@
+﻿
+  Dropping all tables  229.68ms DONE
+
+   INFO  Preparing database.  
+
+  Creating migration table  123.42ms DONE
+
+   INFO  Running migrations.  
+
+  0001_01_01_000000_create_users_table  89.79ms FAIL
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[42000]: Syntax error or access violation: 1071 La cl├® est trop longue. Longueur maximale: 1000 (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: livres, SQL: alter table `utilisateurs` add unique `utilisateurs_email_unique`(`email`))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:841
+    837Ôûò             $exceptionType = ($isUniqueConstraintError = $this->isUniqueConstraintError($e))
+    838Ôûò                 ? UniqueConstraintViolationException::class
+    839Ôûò                 : QueryException::class;
+    840Ôûò 
+  Ô×£ 841Ôûò             $exception = new $exceptionType(
+    842Ôûò                 $this->getNameWithReadWriteType(),
+    843Ôûò                 $query,
+    844Ôûò                 $this->prepareBindings($bindings),
+    845Ôûò                 $e,
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:587
+      PDOException::("SQLSTATE[42000]: Syntax error or access violation: 1071 La cl├® est trop longue. Longueur maximale: 1000")
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:587
+      PDOStatement::execute()
+
